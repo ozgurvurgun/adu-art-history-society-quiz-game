@@ -8,7 +8,7 @@ class Router
     public static bool $hasRoute = false;
     public static array $controller;
 
-    public static function init(): void
+    private static function init(): void
     {
         require 'env.php';
         $splitURL = explode('/', $BASE_URL);
@@ -17,7 +17,7 @@ class Router
         self::$BASE_PATH = $BASE_PATH;
     }
 
-    public static function parse_url(): string
+    private static function parse_url(): string
     {
         self::init();
         $request_uri = str_replace(self::$BASE_PATH, '', $_SERVER['REQUEST_URI']);
@@ -55,7 +55,7 @@ class Router
         }
     }
 
-    public static function folderDepth(int $folderLength): string
+    private static function folderDepth(int $folderLength): string
     {
         $basePath = '/*';
         $repeatedPath = str_repeat($basePath, $folderLength);

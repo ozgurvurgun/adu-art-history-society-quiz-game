@@ -4,7 +4,7 @@ namespace CompartSoftware\System\Core;
 
 class Controller
 {
-    public function view(string $name, array $data = []): void
+    protected function view(string $name, array $data = []): void
     {
         /*   $data = [
              'name'    => 'ozgur',
@@ -16,7 +16,6 @@ class Controller
             echo $surname;
         */
         require 'env.php';
-        
         $fileName = $this->viewFolderDepth($name);
         require_once 'app/views/' . $fileName;
     }
@@ -24,7 +23,7 @@ class Controller
     /**
      * @return mixed class
      */
-    public function model(string $name)
+    protected function model(string $name)
     {
         $fileName = $this->modelFolderDepth($name);
         require_once 'app/models/' . $fileName;
@@ -33,7 +32,7 @@ class Controller
         return new $className();
     }
 
-    public function viewFolderDepth(string $name): string
+    private function viewFolderDepth(string $name): string
     {
         $folderLength =  count(explode('/', $name));
         $basePath = '/*';
@@ -56,7 +55,7 @@ class Controller
         return $fileName;
     }
 
-    public function modelFolderDepth(string $name): string
+    private function modelFolderDepth(string $name): string
     {
         $folderLength =  count(explode('/', $name));
         $basePath = '/*';

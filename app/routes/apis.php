@@ -1,5 +1,5 @@
 <?php
 
-// use \CompartSoftware\System\Core\Router;
+use \CompartSoftware\System\Core\Router;
 
-// Router::run('/api/shop/product', 'shop/apis/GetProduct@index', 'post');
+Router::run('/apis/getQuestion', 'GetQuestion@index');
